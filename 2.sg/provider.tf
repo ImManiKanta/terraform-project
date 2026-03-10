@@ -12,7 +12,6 @@ terraform {
     use_lockfile = true # This is the default behavior now
     encrypt        = true
   }
-
 }
 
 provider "aws" {
