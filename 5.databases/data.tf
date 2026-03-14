@@ -17,3 +17,11 @@ data "aws_ami" "joindevops" {
     values = ["hvm"]
   }
 }
+
+data "aws_ssm_parameter" "private_subnet_id" {
+  name = "/${var.project}/${var.environment}/private_subnet_id"
+}
+
+data "aws_ssm_parameter" "mongodb_sg_id" {
+  name = "/${var.project}/${var.environment}/mongodb_sg_id"
+}

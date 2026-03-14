@@ -1,4 +1,34 @@
 resource "aws_instance" "mongodb" {
   ami = local.ami_id
   instance_type = "t3.micro"
+  subnet_id = local.private_subnet_id
+  vpc_security_group_ids = [local.mongodb_sg_id]
+  tags = {
+    Name = "${var.project}-${var.environment}-mongodb"
+  }
+}
+
+resource "terraform_data" "mongodb" {
+  triggers_replace = [
+    aws_instance.mongodb.id
+  ]
+
+  connection {
+    type     = "ssh"
+    user     = var.ec2_instance_username
+    password = var.ec2_instance_pwd
+    host     = aws_instance.mongodb.private_ip
+  }
+
+   provisioner "file" {
+    source      = "bootstrap.sh" # Local file path
+    destination = "/tmp/bootstrap.sh"    # Destination path on the remote machine
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+       "chmod +x /tmp/bootstrap.sh",
+       "sudo sh /tmp/bootstrap.sh mongodb ${var.environment}"
+    ]
+  }
 }
