@@ -22,7 +22,7 @@ resource "aws_iam_role" "mysql" {
 }
 
 resource "aws_iam_role_policy_attachment" "mysql" {
-  role       = aws_iam_role.bastion.name
+  role       = aws_iam_role.mysql.name
   policy_arn = "arn:aws:iam::166557488034:policy/roboshop_mysql_ssm_read"
 }
 
