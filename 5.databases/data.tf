@@ -18,8 +18,8 @@ data "aws_ami" "joindevops" {
   }
 }
 
-data "aws_ssm_parameter" "private_subnet_id" {
-  name = "/${var.project}/${var.environment}/private_subnet_id"
+data "aws_ssm_parameter" "database_subnet_id" {
+  name = "/${var.project}/${var.environment}/database_subnet_id"
 }
 
 data "aws_ssm_parameter" "mongodb_sg_id" {
