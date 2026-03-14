@@ -94,14 +94,14 @@ resource "terraform_data" "mysql" {
   }
 
    provisioner "file" {
-    source      = "bootstrap.sh" # Local file path
-    destination = "/tmp/bootstrap.sh"    # Destination path on the remote machine
+    source      = "bootstrap_mysql.sh" # Local file path
+    destination = "/tmp/bootstrap_mysql.sh"    # Destination path on the remote machine
   }
 
   provisioner "remote-exec" {
     inline = [
-       "chmod +x /tmp/bootstrap.sh",
-       "sudo sh /tmp/bootstrap.sh mysql ${var.environment}"
+       "chmod +x /tmp/bootstrap_mysql.sh",
+       "sudo sh /tmp/bootstrap_mysql.sh mysql ${var.environment}"
     ]
   }
 }
