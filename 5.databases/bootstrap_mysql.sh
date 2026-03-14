@@ -3,7 +3,7 @@
 component=$1
 environment=$2
 dnf install ansible -y
-sudo yum install python3-pip -y 
+dnf install python3-pip -y 
 pip3 install boto3 botocore
 
 cd /home/ec2-user
