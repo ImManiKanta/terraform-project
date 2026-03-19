@@ -1,4 +1,4 @@
-resource "aws_lb" "backend" {
+resource "aws_lb" "backend_alb" {
   name               = "${var.project}-${var.environment}"
   internal           = false
   load_balancer_type = "application"
@@ -14,8 +14,8 @@ resource "aws_lb" "backend" {
   )
 }
 
-resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = aws_lb.front_end.arn
+resource "aws_lb_listener" "backend_alb" {
+  load_balancer_arn = aws_lb.backend_alb.arn
   port              = "80"
   protocol          = "HTTP"
 
@@ -37,8 +37,8 @@ resource "aws_route53_record" "backend_alb" {
   
   # load balancer details
   alias {
-    name                   = aws_lb.backend.dns_name
-    zone_id                = aws_lb.backend.zone_id
+    name                   = aws_lb.backend_alb.dns_name
+    zone_id                = aws_lb.backend_alb.zone_id
     evaluate_target_health = true
   }
 }
