@@ -6,6 +6,7 @@ resource "aws_lb" "backend_alb" {
   subnets            = [local.private_subnet_id]
 
   enable_deletion_protection = false
+  
   tags = merge(
     {
         Name = "${var.project}-${var.environment}"
