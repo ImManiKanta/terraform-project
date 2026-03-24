@@ -109,3 +109,13 @@ resource "aws_security_group_rule" "catalogue_backend_alb" {
   source_security_group_id = local.backend_alb_sg_id
   security_group_id = local.catalogue_sg_id
 }
+
+resource "aws_security_group_rule" "frontend_alb_public" { #Bastion accepting connection from internet
+  type              = "ingress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  # which SG you are creating this rule
+  security_group_id = local.frontend_alb_sg_id
+}
