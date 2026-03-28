@@ -120,7 +120,7 @@ resource "aws_security_group_rule" "frontend_alb_public" { #Bastion accepting co
   security_group_id = local.frontend_alb_sg_id
 }
 
-#==========================================================
+#==========================ALLOWING TERRAFORM REMOTE EXEC FROM MY IP================================
 resource "aws_security_group_rule" "catalogue_internet" { #catalogue accepting connection from internet
   type              = "ingress"
   from_port         = 22
