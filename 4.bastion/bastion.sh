@@ -15,6 +15,7 @@ cd /home/ec2-user/
 git clone https://github.com/ImManiKanta/terraform-project.git
 chown ec2-user:ec2-user -R terraform-project
 cd terraform-project/5.databases
+git pull
 terraform init
 terraform apply -auto-approve
 
@@ -22,6 +23,7 @@ terraform apply -auto-approve
 cd /home/ec2-user/
 chown ec2-user:ec2-user -R terraform-project
 cd terraform-project/91.components
+git pull
 terraform init
 terraform get -update
 terraform apply -auto-approve
