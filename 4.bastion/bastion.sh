@@ -13,14 +13,14 @@ yum -y install terraform
 #Databases configuration in bastion host
 cd /home/ec2-user/
 git clone https://github.com/ImManiKanta/terraform-project.git
-sudo chown ec2-user:ec2-user -R terraform-project
+chown ec2-user:ec2-user -R terraform-project
 cd terraform-project/5.databases
 terraform init
 terraform apply -auto-approve
 
 #Components configuration in bastion host
 cd /home/ec2-user/
-sudo chown ec2-user:ec2-user -R terraform-project
+chown ec2-user:ec2-user -R terraform-project
 cd terraform-project/91.components
 terraform init
 terraform get -update
