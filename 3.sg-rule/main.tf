@@ -119,3 +119,70 @@ resource "aws_security_group_rule" "frontend_alb_public" { #Bastion accepting co
   # which SG you are creating this rule
   security_group_id = local.frontend_alb_sg_id
 }
+
+#==========================================================
+resource "aws_security_group_rule" "catalogue_internet" { #catalogue accepting connection from internet
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  #cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = [local.my_ip] #my ip address
+  # which SG you are creating this rule
+  security_group_id = local.catalogue_sg_id
+}
+
+resource "aws_security_group_rule" "user_internet" { 
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  #cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = [local.my_ip] #my ip address
+  # which SG you are creating this rule
+  security_group_id = local.user_sg_id
+}
+
+resource "aws_security_group_rule" "cart_internet" { 
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  #cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = [local.my_ip] #my ip address
+  # which SG you are creating this rule
+  security_group_id = local.cart_sg_id
+}
+
+resource "aws_security_group_rule" "payment_internet" { 
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  #cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = [local.my_ip] #my ip address
+  # which SG you are creating this rule
+  security_group_id = local.payment_sg_id
+}
+
+resource "aws_security_group_rule" "shipping_internet" { 
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  #cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = [local.my_ip] #my ip address
+  # which SG you are creating this rule
+  security_group_id = local.shipping_sg_id
+}
+
+resource "aws_security_group_rule" "frontend_internet" { 
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  #cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = [local.my_ip] #my ip address
+  # which SG you are creating this rule
+  security_group_id = local.frontend_sg_id
+}
